@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Donor Prediction</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(window).load(function() {
+              console.log("document loaded");
+
+              $.get("{{ url_for('get_boolean_names') }}",
+                function (data, status) {
+                  console.log("got response for get_boolean_names request");
+                  console.log(data)
+                  if(data) {
+                      var bool = data.boolean;
+                      console.log(bool)
+                      var uiCapitalGain = document.getElementById("uiCapitalGain");
+                      $('#uiCapitalGain').empty();
+                      for(var i in bool) {
+                          var opt = new Option(bool[i]);
+                          $('#uiCapitalGain').append(opt);
+                      }
+                  }
+              });
+
+              $.get("{{ url_for('get_boolean_names') }}",
+                function (data, status) {
+                  console.log("got response for get_boolean_names request");
+                  console.log(data)
+                  if(data) {
+                      var bool = data.boolean;
+                      console.log(bool)
+                      var uiCapitalLoss = document.getElementById("uiCapitalLoss");
+                      $('#uiCapitalLoss').empty();
+                      for(var i in bool) {
+                          var opt = new Option(bool[i]);
+                          $('#uiCapitalLoss').append(opt);
+                      }
+                  }
+              });
+
+
+              $.get("{{ url_for('get_workclass_names') }}",
+                function (data, status) {
+                  console.log("got response for get_workclass_names request");
+                  console.log(data)
+                  if(data) {
+                      var workclass = data.workclass;
+                      console.log(workclass)
+                      var uiWorkclass = document.getElementById("uiWorkclass");
+                      $('#uiWorkclass').empty();
+                      for(var i in workclass) {
+                          var opt = new Option(workclass[i]);
+                          $('#uiWorkclass').append(opt);
+                      }
+                  }
+              });
+
+              $.get("{{ url_for('get_education_names') }}",
+                function (data, status) {
+                  console.log("got response for get_education_names request");
+                  console.log(data)
+                  if(data) {
+                      var education = data.education;
+                      var uiEducation = document.getElementById("uiEducation");
+                      $('#uiEducation').empty();
+                      for(var i in education) {
+                          var opt = new Option(education[i]);
+                          $('#uiEducation').append(opt);
+                      }
+                  }
+              });
+
+              $.get("{{ url_for('get_occupation_names') }}",
+                function (data, status) {
+                  console.log("got response for get_occupation_names request");
+                  if(data) {
+                      var occupation = data.occupation;
+                      var uiOccupation = document.getElementById("uiOccupation");
+                      $('#uiOccupation').empty();
+                      for(var i in occupation) {
+                          var opt = new Option(occupation[i]);
+                          $('#uiOccupation').append(opt);
+                      }
+                  }
+              });
+
+              $.get("{{ url_for('get_marital_status_names') }}",
+                function (data, status) {
+                  console.log("got response for get_marital_status request");
+                  if(data) {
+                      var marital_status = data.marital_status;
+                      var uiMaritalStatus = document.getElementById("uiMaritalStatus");
+                      $('#uiMaritalStatus').empty();
+                      for(var i in marital_status) {
+                          var opt = new Option(marital_status[i]);
+                          $('#uiMaritalStatus').append(opt);
+                      }
+                  }
+              });
+
+              $.get("{{ url_for('get_relationship_names') }}",
+                function (data, status) {
+                  console.log("got response for get_relationship request");
+                  if(data) {
+                      var relationship = data.relationship;
+                      var uiRelationship = document.getElementById("uiRelationship");
+                      $('#uiRelationship').empty();
+                      for(var i in relationship) {
+                          var opt = new Option(relationship[i]);
+                          $('#uiRelationship').append(opt);
+                      }
+                  }
+              });
+
+              $.get("{{ url_for('get_race_names') }}",
+                function (data, status) {
+                  console.log("got response for get_race request");
+                  if(data) {
+                      var race = data.race;
+                      var uiRace = document.getElementById("uiRace");
+                      $('#uiRace').empty();
+                      for(var i in race) {
+                          var opt = new Option(race[i]);
+                          $('#uiRace').append(opt);
+                      }
+                  }
+              });
+
+              $.get("{{ url_for('get_gender_names') }}",
+                function (data, status) {
+                  console.log("got response for get_gender request");
+                  if(data) {
+                      var gender = data.gender;
+                      var uiGender = document.getElementById("uiGender");
+                      $('#uiGender').empty();
+                      for(var i in gender) {
+                          var opt = new Option(gender[i]);
+                          $('#uiGender').append(opt);
+                      }
+                  }
+              });
+
+              $.get("{{ url_for('get_native_country_names') }}",
+                function (data, status) {
+                  console.log("got response for get_native_country request");
+                  if(data) {
+                      var native_country = data.native_country;
+                      var uiNativeCountry = document.getElementById("uiNativeCountry");
+                      $('#uiNativeCountry').empty();
+                      for(var i in native_country) {
+                          var opt = new Option(native_country[i]);
+                          $('#uiNativeCountry').append(opt);
+                      }
+                  }
+              });
+
+
+            });
+        </script>
+
+
+        <!-- BootStrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- css -->
+        <style>
+            body {
+                background-size: 100% 135%;
+                background-color:  #F5B7B1;
+                text-align: center;
+            }
+
+            .navbar {
+                background-color: #000000;
+            }
+
+            form label {
+                font-weight:bold
+            }
+
+            a {
+                color: #f7ff08;
+                text-align: center;
+            }
+
+            a:hover {
+                color: #ff0808;
+              }
+
+            .icon-bar {
+              position: fixed;
+              top: 50%;
+              -webkit-transform: translateY(-50%);
+              -ms-transform: translateY(-50%);
+              transform: translateY(-50%);
+            }
+
+            .icon-bar a{
+              display: block;
+              text-align: center;
+              padding: 16px;
+              transition: all 0.3s ease;
+              color: white;
+              font-size: 20px;
+            }
+
+            .icon-bar a:hover {
+              background-color: #000;
+            }
+            /* Footer */
+            .footer{
+                background-color: #E9E9E9;
+                color: #000000;
+                padding: 0px;
+                text-align: center;
+            }
+
+            .contact-icon{
+                color: #000000;
+                padding: 0px;
+            }
+
+            .contact-icon:hover{
+                color: #a6a19a;
+            }
+
+            .footer-description{
+                margin: 0;
+                font-size: 12px;
+                font-weight: 100;
+            }
+
+    	</style>
+
+
+    </head>
+
+    <body>
+            <!-- As a heading -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header"></div>
+            </div>
+        </nav>
+
+        <!-- Website Title -->
+        <div class="jumbotron text-center">
+            <h1>Donor Prediction App</h1>
+            <div class='description'>
+                <p>A Machine Learning Web App, Built with Flask, Deployed using Heroku.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <form action="/predict" method="POST">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <!-- Age Input -->
+                            <label>Enter your Age:</label>
+                            <input type="text" name="age" class="form-control" placeholder="Eg: 30" required/>
+                          </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <!-- Education Dropdown -->
+                            <label>Select Education:</label>
+                            <select class="form-control" name="education" id="uiEducation" required></select><br>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <!-- Workclass Dropdown -->
+                            <label>Select Workclass:</label>
+                            <select class="form-control" name="workclass" id="uiWorkclass" required></select><br>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <!-- Occupation Dropdown -->
+                            <label>Select Occupation:</label>
+                            <select class="form-control" name="occupation" id="uiOccupation" required></select><br>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <!-- marital_status Dropdown -->
+                            <label>Select Marital Status:</label>
+                            <select class="form-control" name="marital_status" id="uiMaritalStatus" required></select><br>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <!-- relationship Dropdown -->
+                            <label>Select Relationship:</label>
+                            <select class="form-control" name="relationship" id="uiRelationship" required></select><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <!-- race Input -->
+                            <label>Select Race:</label>
+                            <select class="form-control" name="race" id="uiRace" required></select><br>
+                          </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <!-- race Input -->
+                            <label>Select Gender:</label>
+                            <select class="form-control" name="gender" id="uiGender" required></select><br>
+						</div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <!-- race Input -->
+                            <label>Select Native Country:</label>
+                            <select class="form-control" name="native_country" id="uiNativeCountry" required></select><br>
+						</div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <!-- Capital Input -->
+                            <label>Capital Gain?:</label>
+                            <select class="form-control" name="capital_gain" id="uiCapitalGain" required></select><br>
+						</div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <!-- Age Input -->
+                            <label>Enter your Working Hour:</label>
+                            <input type="text" name="hours_per_week" class="form-control" placeholder="Eg: 40" required/>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Predict Donor</button>
+            </form>
+            <br><br>
+            <h3>{{ prediction_text }}</h3>
+        </div>
+        <!-- Footer -->
+       <div class='footer'>
+           <div class="contact">
+               <a target="_blank" href="https://github.com/rishabh7795"><i class="fab fa-github fa-lg contact-icon"></i></a>
+               <a target="_blank" href="https://www.linkedin.com/in/rishabh7795"><i class="fab fa-linkedin fa-lg contact-icon"></i></a>
+           </div>
+           <p class='footer-description'>© Rishabh Choudhary 2020</p>
+       </div>
+
+    </body>
+</html>
+
